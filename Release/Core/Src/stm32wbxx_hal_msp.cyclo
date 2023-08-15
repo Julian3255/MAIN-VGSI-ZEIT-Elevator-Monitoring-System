@@ -1,0 +1,10 @@
+stm32wbxx_ll_bus.h:539:22:LL_AHB2_GRP1_EnableClock	1
+stm32wbxx_hal_msp.c:66:6:HAL_MspInit	1
+stm32wbxx_hal_msp.c:92:6:HAL_IPCC_MspInit	2
+stm32wbxx_hal_msp.c:119:6:HAL_IPCC_MspDeInit	2
+stm32wbxx_hal_msp.c:145:6:HAL_RTC_MspInit	3
+stm32wbxx_hal_msp.c:182:6:HAL_RTC_MspDeInit	2
+stm32wbxx_hal_msp.c:208:6:HAL_SPI_MspInit	3
+stm32wbxx_hal_msp.c:276:6:HAL_SPI_MspDeInit	3
+stm32wbxx_hal_msp.c:329:6:HAL_UART_MspInit	5
+stm32wbxx_hal_msp.c:422:6:HAL_UART_MspDeInit	2
