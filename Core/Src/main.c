@@ -25,7 +25,6 @@
 #include "stm32wbxx_hal_spi.h"
 #include "stm32wbxx_it.h"
 
-#include "CAN_TxRx.c"
 #include "mcp2515.h"
 #include "CAN_TxRx.h"
 // Yang Junyoung
