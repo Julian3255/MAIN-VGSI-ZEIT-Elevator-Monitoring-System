@@ -24,6 +24,7 @@ C_DEPS :=
 SUBDIRS := \
 Core/Src \
 Core/Startup \
+Drivers/BSP/P-NUCLEO-WB55.Nucleo \
 Drivers/CAN_SPI_MCP2515 \
 Drivers/STM32WBxx_HAL_Driver/Src \
 Middlewares/ST/STM32_WPAN/ble/core/auto \

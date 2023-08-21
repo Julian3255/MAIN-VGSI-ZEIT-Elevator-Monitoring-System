@@ -21,6 +21,7 @@ RM := rm -rf
 -include Middlewares/ST/STM32_WPAN/ble/core/auto/subdir.mk
 -include Drivers/STM32WBxx_HAL_Driver/Src/subdir.mk
 -include Drivers/CAN_SPI_MCP2515/subdir.mk
+-include Drivers/BSP/P-NUCLEO-WB55.Nucleo/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include objects.mk
@@ -71,8 +72,13 @@ all: main-build
 main-build: EMS.elf secondary-outputs
 
 # Tool invocations
+<<<<<<< Updated upstream
 EMS.elf EMS.map: $(OBJS) $(USER_OBJS) C:\Users\YANGJUNYOUNG\Documents\GitHub\VGSI_Zeit_Elevator_Monitoring_System_NEW\STM32WB55RGVX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-gcc -o "EMS.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\YANGJUNYOUNG\Documents\GitHub\VGSI_Zeit_Elevator_Monitoring_System_NEW\STM32WB55RGVX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EMS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+=======
+EMS.elf EMS.map: $(OBJS) $(USER_OBJS) C:\Users\YANGJUNYOUNG\Documents\GitHub\MAIN-VGSI-ZEIT-Elevator-Monitoring-System\STM32WB55RGVX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "EMS.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\YANGJUNYOUNG\Documents\GitHub\MAIN-VGSI-ZEIT-Elevator-Monitoring-System\STM32WB55RGVX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EMS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+>>>>>>> Stashed changes
 	@echo 'Finished building target: $@'
 	@echo ' '
 

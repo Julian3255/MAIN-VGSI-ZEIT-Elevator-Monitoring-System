@@ -67,6 +67,14 @@
 									<listOptionValue builtIn="false" value="../Middlewares/ST/STM32_WPAN/ble/svc/Src"/>
 									<listOptionValue builtIn="false" value="../Utilities/sequencer"/>
 									<listOptionValue builtIn="false" value="../Middlewares/ST/STM32_WPAN/ble"/>
+<<<<<<< Updated upstream
+=======
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/EMS/Drivers/CAN_SPI_MCP2515}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Users\YANGJUNYOUNG\Documents\GitHub\MAIN-VGSI-ZEIT-Elevator-Monitoring-System\Drivers\BSP&quot;"/>
+								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.otherflags.1495340470" name="Other flags" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.otherflags" useByScannerDiscovery="true" valueType="stringList">
+									<listOptionValue builtIn="false" value="-fcommon"/>
+>>>>>>> Stashed changes
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.170883695" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>

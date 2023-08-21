@@ -1,3 +1,9 @@
+<<<<<<< Updated upstream
 ../STM32_WPAN/App/custom_stm.c:125:30:Custom_STM_Event_Handler	12
 ../STM32_WPAN/App/custom_stm.c:341:6:SVCCTL_InitCustomSvc	1
 ../STM32_WPAN/App/custom_stm.c:438:12:Custom_STM_App_Update_Char	3
+=======
+../STM32_WPAN/App/custom_stm.c:125:30:Custom_STM_Event_Handler	9
+../STM32_WPAN/App/custom_stm.c:296:6:SVCCTL_InitCustomSvc	1
+../STM32_WPAN/App/custom_stm.c:392:12:Custom_STM_App_Update_Char	3
+>>>>>>> Stashed changes

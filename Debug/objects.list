@@ -9,6 +9,7 @@
 "./Core/Src/sysmem.o"
 "./Core/Src/system_stm32wbxx.o"
 "./Core/Startup/startup_stm32wb55rgvx.o"
+"./Drivers/BSP/P-NUCLEO-WB55.Nucleo/stm32wbxx_nucleo.o"
 "./Drivers/CAN_SPI_MCP2515/CAN_TxRx.o"
 "./Drivers/CAN_SPI_MCP2515/mcp2515.o"
 "./Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal.o"

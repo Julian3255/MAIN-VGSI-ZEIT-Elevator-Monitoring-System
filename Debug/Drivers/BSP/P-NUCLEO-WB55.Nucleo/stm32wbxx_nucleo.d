@@ -1,4 +1,7 @@
-Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
+Drivers/BSP/P-NUCLEO-WB55.Nucleo/stm32wbxx_nucleo.o: \
+ ../Drivers/BSP/P-NUCLEO-WB55.Nucleo/stm32wbxx_nucleo.c \
+ ../Drivers/BSP/P-NUCLEO-WB55.Nucleo/stm32wbxx_nucleo.h \
+ ../Drivers/BSP/P-NUCLEO-WB55.Nucleo/stm32wbxx_nucleo_errno.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h \
  ../Core/Inc/stm32wbxx_hal_conf.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_dma.h \
@@ -38,35 +41,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_spi_ex.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_uart.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_uart_ex.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h \
- ../Core/Inc/app_conf.h \
- ../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/hw.h \
- ../Core/Inc/hw_conf.h ../Core/Inc/hw_if.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_exti.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rcc.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_ipcc.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_pwr.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_cortex.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_utils.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_hsem.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_gpio.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rtc.h \
- ../Middlewares/ST/STM32_WPAN/ble/core/ble_bufsize.h \
- ../Core/Inc/app_entry.h ../Core/Inc/app_common.h \
- ../Core/Inc/stm32wbxx_it.h \
-<<<<<<< Updated upstream
- C:/Users/YANGJUNYOUNG/Documents/GitHub/VGSI_Zeit_Elevator_Monitoring_System_NEW/Drivers/CAN_SPI_MCP2515/mcp2515.h \
- C:/Users/YANGJUNYOUNG/Documents/GitHub/VGSI_Zeit_Elevator_Monitoring_System_NEW/Drivers/CAN_SPI_MCP2515/typedef.h \
- C:/Users/YANGJUNYOUNG/Documents/GitHub/VGSI_Zeit_Elevator_Monitoring_System_NEW/Drivers/CAN_SPI_MCP2515/CAN_TxRx.h \
-=======
- C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/mcp2515.h \
- C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/typedef.h \
- C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/CAN_TxRx.h \
->>>>>>> Stashed changes
- ../Utilities/sequencer/stm32_seq.h
-../Core/Inc/main.h:
+ ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h
+../Drivers/BSP/P-NUCLEO-WB55.Nucleo/stm32wbxx_nucleo.h:
+../Drivers/BSP/P-NUCLEO-WB55.Nucleo/stm32wbxx_nucleo_errno.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h:
 ../Core/Inc/stm32wbxx_hal_conf.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_dma.h:
@@ -107,32 +84,3 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_uart.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_uart_ex.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h:
-../Core/Inc/app_conf.h:
-../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/hw.h:
-../Core/Inc/hw_conf.h:
-../Core/Inc/hw_if.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_exti.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rcc.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_ipcc.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_pwr.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_cortex.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_utils.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_hsem.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_gpio.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rtc.h:
-../Middlewares/ST/STM32_WPAN/ble/core/ble_bufsize.h:
-../Core/Inc/app_entry.h:
-../Core/Inc/app_common.h:
-../Core/Inc/stm32wbxx_it.h:
-<<<<<<< Updated upstream
-C:/Users/YANGJUNYOUNG/Documents/GitHub/VGSI_Zeit_Elevator_Monitoring_System_NEW/Drivers/CAN_SPI_MCP2515/mcp2515.h:
-C:/Users/YANGJUNYOUNG/Documents/GitHub/VGSI_Zeit_Elevator_Monitoring_System_NEW/Drivers/CAN_SPI_MCP2515/typedef.h:
-C:/Users/YANGJUNYOUNG/Documents/GitHub/VGSI_Zeit_Elevator_Monitoring_System_NEW/Drivers/CAN_SPI_MCP2515/CAN_TxRx.h:
-=======
-C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/mcp2515.h:
-C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/typedef.h:
-C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/CAN_TxRx.h:
->>>>>>> Stashed changes
-../Utilities/sequencer/stm32_seq.h:

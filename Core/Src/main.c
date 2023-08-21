@@ -38,9 +38,19 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+<<<<<<< Updated upstream
 #define TX_COMMAND    OPEN_DOOR
 #define CLOSE_DOOR    (1u)
 #define OPEN_DOOR     (2u)
+=======
+enum
+{
+	TRANSFER_WAIT,
+	TRANSFER_COMPLETE,
+	TRANSFER_ERROR
+};
+
+>>>>>>> Stashed changes
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -56,12 +66,25 @@ RTC_HandleTypeDef hrtc;
 SPI_HandleTypeDef hspi1;
 SPI_HandleTypeDef hspi2;
 
+DMA_HandleTypeDef hdma_spi2_tx;
+DMA_HandleTypeDef hdma_spi2_rx;
+
 UART_HandleTypeDef huart1;
-DMA_HandleTypeDef hdma_usart1_rx;
 DMA_HandleTypeDef hdma_usart1_tx;
+DMA_HandleTypeDef hdma_usart1_rx;
 
 /* USER CODE BEGIN PV */
+uint8_t aTxBuffer[] = "****SPI - Two Boards communication based on DMA **** SPI Message ******** SPI Message ******** SPI Message ****";
 
+<<<<<<< Updated upstream
+=======
+/* Buffer used for reception */
+//uint8_t aRxBuffer [BUFFERSIZE];
+
+/* transfer state */
+__IO uint32_t wTransferState = TRANSFER_WAIT;
+
+>>>>>>> Stashed changes
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -69,13 +92,17 @@ void SystemClock_Config(void);
 void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
-static void MX_SPI2_Init(void);
 static void MX_SPI1_Init(void);
+static void MX_SPI2_Init(void);
 static void MX_IPCC_Init(void);
 static void MX_RTC_Init(void);
 static void MX_RF_Init(void);
 /* USER CODE BEGIN PFP */
+<<<<<<< Updated upstream
 
+=======
+static uint16_t Buffercmp(uint8_t *pBuffer1, uint8_t *pBuffer2, uint16_t BufferLength);
+>>>>>>> Stashed changes
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -269,6 +296,7 @@ int main(void)
 
 			rx_id = (rx_sidh << 3) | (rx_sidl >> 5);
 
+<<<<<<< Updated upstream
 			Read_RXdata(&rx_id, &base_adr);
 		// Clear the interrupt flags
 			MCP2515_RegModify(MCP_CANINTF, 0xFF, 0x00);
@@ -322,6 +350,19 @@ int main(void)
 	    // Reset send request to prevent unwanted transmission
 	    send = 0;
 	  }
+=======
+    /*  SEND  */
+    if((send) & (start_tx)) {
+    /* Set TXREQ to initiate message transmission and clear error bits in TXB0CTRL */
+    MCP2515_SPI2_RegModify(MCP_TXB0CTRL, MCP_TXB_ABTF_M | MCP_TXB_MLOA_M \
+        | MCP_TXB_TXERR_M | MCP_TXB_TXREQ_M, 0x00);
+    MCP2515_SPI2_RegModify(MCP_TXB0CTRL, 0x03, 0xFF);
+
+    /* Load the High and Low address and DLC byte length */
+    MCP2515_SPI2_WriteReg(MCP_TXB0SIDH, 0x40, 1);  // 0x200 = 0010 0000 0000 -> 0100 0000    = 0x40
+    MCP2515_SPI2_WriteReg(MCP_TXB0SIDL, 0x00, 1);   // 000 = 0x00
+    MCP2515_SPI2_WriteReg(MCP_TXB0DLC, 0x04, 1); // change to correspond byte length
+>>>>>>> Stashed changes
 
 
   #endif
@@ -945,6 +986,11 @@ void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
+	//BSP_LED_Off(LED1);
+	//BSP_LED_Off(LED2);
+  /* Turn LED3 on */
+	//BSP_LED_On(LED3);
+
   /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
   while (1)
