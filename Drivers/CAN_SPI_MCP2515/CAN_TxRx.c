@@ -21,15 +21,25 @@ EMS_Buffer  Slave_1;
 extern uint8 rx_sidh;
 extern uint8 rx_sidl;
 extern uint16 rx_id;
+extern uint8 rx_sidh2;
+extern uint8 rx_sidl2;
+extern uint16 rx_id2;
 extern uint8 TxDataAdrr[8];
 extern uint8 TxBufferData_SPI1[8];
 extern uint8 TxBufferData_SPI2[8];
 extern volatile uint8 rxLength;
+extern volatile uint8 rxLength2;
 
 void Read_CAN_ID(void) {
     MCP2515_SPI1_ReadReg(0x61, &rx_sidh, 1);
     MCP2515_SPI1_ReadReg(0x62, &rx_sidl, 1);
     rx_id = (rx_sidh << 3) | (rx_sidl >> 5);
+}
+
+void Read_CAN2_ID(void) {
+    MCP2515_SPI2_ReadReg(0x61, &rx_sidh2, 1);
+    MCP2515_SPI2_ReadReg(0x62, &rx_sidl2, 1);
+    rx_id2 = (rx_sidh2 << 3) | (rx_sidl2 >> 5);
 }
 
 void Read_TXdata(int channel) {
@@ -57,11 +67,7 @@ extern uint8 tx_sidl;
 extern uint8 tx_sidh;
 
 extern volatile int CAN_rx;
-extern uint8 ID_400[8];
-extern uint8 ID_481[8];
-extern uint8 ID_490[8];
-extern uint8 ID_68B[8];
-extern uint8 ID_301[8];
+
 extern EMS_data Master_EMS; 
 extern EMS_data Slave_EMS_1;
 extern volatile uint16 send_rx;
@@ -69,11 +75,12 @@ extern volatile int ID_481_flag;
 extern volatile int rx_flag;
 
 void Read_RXdata(uint16* rx_id, uint8* base_adr) {
+	 MCP2515_SPI1_ReadReg(0x65, &rxLength, 1);
     switch(*rx_id) 
     {
         /* 0x400 - Indicate current floor of elevator */
         case 0x400:
-            MCP2515_SPI1_ReadReg(0x65, &rxLength, 1);
+           // MCP2515_SPI1_ReadReg(0x65, &rxLength, 1);
             for (int i = 0; i < rxLength; i++) {
               Master.ID_400_buffer[i] = 0x00;
               MCP2515_SPI1_ReadReg(*base_adr+i, &Master.ID_400_buffer[i], 1);
@@ -85,14 +92,14 @@ void Read_RXdata(uint16* rx_id, uint8* base_adr) {
 
         /* 0x481 - Indicate door status (opened/closed) of the elevator */
         case 0x481:
-            MCP2515_SPI1_ReadReg(0x65, &rxLength, 1);
+         //   MCP2515_SPI1_ReadReg(0x65, &rxLength, 1);
             for (int i = 0; i < rxLength; i++) {
                 MCP2515_SPI1_ReadReg(*base_adr+i, &Master.ID_481_buffer[i], 1);
             }
             for(int j = rxLength; j < 8; j++) {
                 Master.ID_481_buffer[j] = 0x00;
             }
-			if((Master.ID_481_buffer[0] == 0x87) && (Master.ID_481_buffer[1] == 0x04)) {
+			if(Master.ID_481_buffer[1] == 0x02) {
 				if(Master.ID_481_buffer[5] == 0x00) {
 					Master_EMS.door_status = DOOR_OPENED;
 				}
@@ -104,29 +111,29 @@ void Read_RXdata(uint16* rx_id, uint8* base_adr) {
 
         /* 0x490 - Indicate the chosen floor from the panel or the open/close door button status (ON/OFF)*/
         case 0x490:
-            MCP2515_SPI1_ReadReg(0x65, &rxLength, 1);
+           // MCP2515_SPI1_ReadReg(0x65, &rxLength, 1);
             for (int i = 0; i < rxLength; i++) {
-              MCP2515_SPI1_ReadReg(*base_adr+i, &Master.ID_400_buffer[i], 1);
+              MCP2515_SPI1_ReadReg(*base_adr+i, &Master.ID_490_buffer[i], 1);
             }
             for(int j = rxLength; j < 8; j++) {
-                Master.ID_400_buffer[j] = 0x00;
+                Master.ID_490_buffer[j] = 0x00;
             }
-            switch (Master.ID_400_buffer[0])
+            switch (Master.ID_490_buffer[0])
                 {
                 case 0x05:
-                    Master_EMS.chosen_floor = Master.ID_400_buffer[1];
+                    Master_EMS.chosen_floor = Master.ID_490_buffer[1];
                     break;
                 case 0x0E:
-                    if(Master.ID_400_buffer[1] == 0x09) {
-                        if(Master.ID_400_buffer[5] == 0x00) {
+                    if(Master.ID_490_buffer[1] == 0x09) {
+                        if(Master.ID_490_buffer[5] == 0x00) {
                             Master_EMS.open_door_button_stat = BUTTON_OFF;
                         }
                         else {
                             Master_EMS.open_door_button_stat = BUTTON_ON;
                         }
                     }
-                    else if (Master.ID_400_buffer[1] == 0x0A){
-                        if(Master.ID_400_buffer[5] == 0x00) {
+                    else if (Master.ID_490_buffer[1] == 0x0A){
+                        if(Master.ID_490_buffer[5] == 0x00) {
                             Master_EMS.close_door_button_stat = BUTTON_OFF;
                         }
                         else {
@@ -139,7 +146,7 @@ void Read_RXdata(uint16* rx_id, uint8* base_adr) {
 
         /* 0x68B - Indicate the time of the elevator */
         case 0x68B:
-            MCP2515_SPI1_ReadReg(0x65, &rxLength, 1);
+           // MCP2515_SPI1_ReadReg(0x65, &rxLength, 1);
             for (int i = 0; i < rxLength; i++) {
               Master.ID_68B_buffer[i] = 0x00;
               MCP2515_SPI1_ReadReg(*base_adr+i, &Master.ID_68B_buffer[i], 1);
@@ -153,31 +160,32 @@ void Read_RXdata(uint16* rx_id, uint8* base_adr) {
 } 
 
 void Read_Slave1_RXdata(uint16* rx_id, uint8* base_adr) {
-    switch(*rx_id) 
+	MCP2515_SPI2_ReadReg(0x65, &rxLength2, 1);
+
+    switch(*rx_id)
     {
         /* 0x400 - Indicate current floor of elevator */
         case 0x301:
-            MCP2515_SPI1_ReadReg(0x65, &rxLength, 1);
-            for (int i = 0; i < rxLength; i++) {
-              MCP2515_SPI1_ReadReg(*base_adr+i, &Slave_1.ID_400_buffer[i], 1);
+            for (int i = 0; i < rxLength2; i++) {
+              MCP2515_SPI2_ReadReg(*base_adr+i, &Slave_1.ID_400_buffer[i], 1);
             }
-            for(int j = rxLength; j < 8; j++) {
+            for(int j = rxLength2; j < 8; j++) {
                 Slave_1.ID_400_buffer[j] = 0x00;
             }
             if(Slave_1.ID_400_buffer[0] == 0x40) {
                     Slave_EMS_1.curren_floor = Slave_1.ID_400_buffer[1];
             }
+            CAN_rx++;
         break;
 
         case 0x311:
-            MCP2515_SPI1_ReadReg(0x65, &rxLength, 1);
-            for (int i = 0; i < rxLength; i++) {
-                MCP2515_SPI1_ReadReg(*base_adr+i, &Slave_1.ID_481_buffer[i], 1);
+            for (int i = 0; i < rxLength2; i++) {
+                MCP2515_SPI2_ReadReg(*base_adr+i, &Slave_1.ID_481_buffer[i], 1);
             }
-            for(int j = rxLength; j < 8; j++) {
+            for(int j = rxLength2; j < 8; j++) {
                 Slave_1.ID_481_buffer[j] = 0x00;
             }
-            if((Slave_1.ID_481_buffer[0] == 0x87) && (Slave_1.ID_481_buffer[1] == 0x04)) {
+            if(Slave_1.ID_481_buffer[1] == 0x02) {
                 if(Slave_1.ID_481_buffer[5] == 0x00) {
                     Slave_EMS_1.door_status = DOOR_OPENED;
                 }
@@ -185,13 +193,13 @@ void Read_Slave1_RXdata(uint16* rx_id, uint8* base_adr) {
                     Slave_EMS_1.door_status = DOOR_CLOSED;
                 }
             }
+            CAN_rx++;
         break;  
         case 0x321:
-            MCP2515_SPI1_ReadReg(0x65, &rxLength, 1);
-            for (int i = 0; i < rxLength; i++) {
-              MCP2515_SPI1_ReadReg(*base_adr+i, &Slave_1.ID_490_buffer[i], 1);
+            for (int i = 0; i < rxLength2; i++) {
+              MCP2515_SPI2_ReadReg(*base_adr+i, &Slave_1.ID_490_buffer[i], 1);
             }
-            for(int j = rxLength; j < 8; j++) {
+            for(int j = rxLength2; j < 8; j++) {
                 Slave_1.ID_490_buffer[j] = 0x00;
             }
             switch (Slave_1.ID_490_buffer[0])
@@ -216,19 +224,20 @@ void Read_Slave1_RXdata(uint16* rx_id, uint8* base_adr) {
                             Slave_EMS_1.close_door_button_stat = BUTTON_ON;
                         }
                     }
+                    CAN_rx++;
             }
                 break;
 
         case 0x331:
-            MCP2515_SPI1_ReadReg(0x65, &rxLength, 1);
-            for (int i = 0; i < rxLength; i++) {
-              MCP2515_SPI1_ReadReg(*base_adr+i, &Slave_1.ID_68B_buffer[i], 1);
+            for (int i = 0; i < rxLength2; i++) {
+              MCP2515_SPI2_ReadReg(*base_adr+i, &Slave_1.ID_68B_buffer[i], 1);
             }
             getEMStime_Slave1();
+            CAN_rx++;
         break;
         
         default:
-                break;       
+            break;       
     }
 }
 
@@ -295,7 +304,8 @@ void Send_RXdata(uint16* rx_id) {
             }
             MCP2515_SPI2_WriteReg(MCP_TXB0CTRL, 0x08, 0x08);
          break;
-    }   
+    }
+
 }
 
 uint8 close_cmd_data[2][8] = 

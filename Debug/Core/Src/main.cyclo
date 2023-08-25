@@ -1,0 +1,17 @@
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rcc.h:1679:22:LL_RCC_LSE_SetDriveCapability	1
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:364:22:LL_AHB1_GRP1_EnableClock	1
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:539:22:LL_AHB2_GRP1_EnableClock	1
+../Core/Src/main.c:174:5:main	4
+../Core/Src/main.c:342:6:SystemClock_Config	3
+../Core/Src/main.c:396:6:PeriphCommonClock_Config	2
+../Core/Src/main.c:422:13:MX_IPCC_Init	2
+../Core/Src/main.c:451:13:MX_RF_Init	1
+../Core/Src/main.c:475:13:MX_RTC_Init	3
+../Core/Src/main.c:521:13:MX_SPI1_Init	2
+../Core/Src/main.c:564:13:MX_SPI2_Init	2
+../Core/Src/main.c:607:6:MX_USART1_UART_Init	5
+../Core/Src/main.c:656:13:MX_DMA_Init	1
+../Core/Src/main.c:678:13:MX_GPIO_Init	1
+../Core/Src/main.c:741:5:SW2_CloseButton_Scan	6
+../Core/Src/main.c:786:5:SW3_OpenButton_Scan	6
+../Core/Src/main.c:848:6:Error_Handler	1
