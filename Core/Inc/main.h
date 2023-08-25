@@ -51,7 +51,7 @@ typedef uint32_t uint32;
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-#define EMS_TYPE          SLAVE_EMS
+#define EMS_TYPE          MASTER_EMS
 #define MASTER_EMS        (0u)
 #define SLAVE_EMS         (1u)
 
@@ -70,6 +70,15 @@ void Error_Handler(void);
 void MX_USART1_UART_Init(void);
 
 /* USER CODE BEGIN EFP */
+/* 
+Define data type for the time os EMS, which includes:
+  - second
+  - minute
+  - hour
+  - day
+  - weekday
+  -year
+*/
 typedef struct 
 {
     int second;
@@ -79,6 +88,16 @@ typedef struct
     int weekday;
     int year;  
 } time;
+
+/* 
+Define data type for each EMS, which includes:
+  - time
+  - chosen floor
+  - current floor
+  - door status (opened = 0, closed = 1)
+  - open door button status (unpressed = 0, pressed = 1)
+  - close door button status (unpressed = 0, pressed = 1)
+*/
 typedef struct 
 {
     time EMS_time;
@@ -114,14 +133,9 @@ typedef struct
 #define DOOR_CLOSED   (1)
 #define BUTTON_OFF    (0)
 #define BUTTON_ON    (1)
-#define FLOOR_G       (0)
-#define FLOOR_1       (1) 
-#define FLOOR_2       (2)
-#define FLOOR_3       (3)
-
 
 /*Macros for SPI operation*/
-/* SPI related variables */
+/* SPI related variables for handling MCP2515 CAN-SPI module */
 extern SPI_HandleTypeDef        hspi1;
 #define SPI_CAN                 &hspi1
 #define SPI1_CS_OFF()          (HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET))

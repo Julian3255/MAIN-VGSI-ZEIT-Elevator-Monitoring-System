@@ -29,6 +29,7 @@ static uint8_t SPI1_Rx(void)
   return retVal;
 }
 
+// Reset the MCP2515 connected through SPI1
 void MCP2515_SPI1_Reset(void)
 {    
   SPI1_CS_OFF();
@@ -38,6 +39,7 @@ void MCP2515_SPI1_Reset(void)
   SPI1_CS_ON();
 }
 
+// Read the content of the register and return to a buffer
 void MCP2515_SPI1_ReadReg(uint8_t addr, uint8_t* buff, uint8_t size) {
 	SPI1_CS_OFF();
 	SPI1_Tx(MCP_READ);
@@ -48,6 +50,7 @@ void MCP2515_SPI1_ReadReg(uint8_t addr, uint8_t* buff, uint8_t size) {
 	SPI1_CS_ON();
 }
 
+// Write the content to the register
 void MCP2515_SPI1_WriteReg(uint8_t addr, uint8_t* buff, uint8_t size) {
 	SPI1_CS_OFF();
 	SPI1_Tx(MCP_WRITE);
@@ -58,6 +61,7 @@ void MCP2515_SPI1_WriteReg(uint8_t addr, uint8_t* buff, uint8_t size) {
 	SPI1_CS_ON();
 }
 
+// Modify the register content by setting the corresponding bits
 void MCP2515_SPI1_RegModify(uint8_t addr, uint8_t mask, uint8_t data) {
 	SPI1_CS_OFF();
 	SPI1_Tx(MCP_BITMOD);
@@ -67,6 +71,7 @@ void MCP2515_SPI1_RegModify(uint8_t addr, uint8_t mask, uint8_t data) {
 	SPI1_CS_ON();
 }
 
+// Config the rate of MCP2515 to make sure the speed is 125000 bps
 void MCP2515_SPI1_RateConfig(void) {
 	MCP2515_SPI1_WriteReg(MCP_CNF1, MCP_8M_125K_CF1, 1);
 	MCP2515_SPI1_WriteReg(MCP_CNF2, MCP_8M_125K_CF2, 1);
@@ -74,6 +79,7 @@ void MCP2515_SPI1_RateConfig(void) {
 	HAL_Delay(5);
 }
 
+// Reset all of the address in MCP2515
 void MCP2515_SPI1_AddrReset(void) {
 	for (int i = 0; i < sizeof(mcp2515_bufffers_init)/(2*sizeof(DWORD)); i++) {
 		SPI1_CS_OFF();
@@ -86,6 +92,8 @@ void MCP2515_SPI1_AddrReset(void) {
 		SPI1_CS_ON();
 	}
 }
+
+// Initilize the MCP2515 connected through SPI1
 void MCP2515_SPI1_CanInit(void) {
 	MCP2515_SPI1_Reset();
 	MCP2515_SPI1_RegModify(MCP_CANCTRL, MODE_MASK, MODE_CONFIG);

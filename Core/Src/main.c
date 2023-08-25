@@ -137,12 +137,11 @@ EMS_data    Slave_EMS_1;
 extern EMS_Buffer Master;
 extern EMS_Buffer Slave_1;
 
-
+/* Variables for debugging purposes*/
 uint8 count_master = 1;
 uint8 temp1;
 volatile int data_flag = 0;
 volatile int CAN_rx = 0;
-
 uint8 tec = 0;
 uint16 rec = 0;
 uint8 eflg = 0;
@@ -156,8 +155,6 @@ uint8 rxb1ctrl = 0;
 uint8 canstat = 0;
 uint8 status = 0;
 uint16 rx_status = 0;
-
-
 uint8 cnf1, cnf2, cnf3;
 uint8 tx0_ctrl_b4 = 0;
 uint8 tx0_ctrl = 0;
@@ -213,14 +210,8 @@ int main(void)
   MX_RF_Init();
   /* USER CODE BEGIN 2 */
 
-
-  count_master = 1;
   MCP2515_SPI1_CanInit();
   MCP2515_SPI2_CanInit();
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET);
   /* USER CODE END 2 */
 
   /* Init code for STM32_WPAN */
@@ -234,50 +225,41 @@ int main(void)
   {
     // Yang Junyoung
     UTIL_SEQ_Run(UTIL_SEQ_DEFAULT);
-    count_master = 2;
 
-
-  /* Read value from SW2 and SW3 to get open and close door signal */
-  SW2_CloseButton_Scan();
-  SW3_OpenButton_Scan();
+    /* Read value from SW2 and SW3 to get open and close door signal */
+    SW2_CloseButton_Scan();
+    SW3_OpenButton_Scan();
 
   #if(TEST_FUNCTION == RTX_FUNCTION)
     /*  READ  */
+    /* Read the interrupt flag from both SPI channels*/
     MCP2515_SPI1_ReadReg(MCP_CANINTF, &can_intf, 1);
     MCP2515_SPI2_ReadReg(MCP_CANINTF, &can_intf2, 1);
 
-   if(!data_flag) {
     // If the interrupt for RX0B buffer is full -> extract the data
       if ((can_intf & (0x01))) {
           base_adr = 0x66;
           rx_done++;
       // Read the high-level and low-level address extracted from the CAN ID
         Read_CAN_ID();
-
         Read_RXdata(&rx_id, &base_adr);
         #if(EMS_TYPE == SLAVE_EMS) 
           Send_RXdata(&rx_id);
           Read_TXdata(SPI_CHANNEL_2);
           CAN_rx++;
-		#endif
-
+		    #endif
       // Clear the interrupt flags
         MCP2515_SPI1_RegModify(MCP_CANINTF, 0xFF, 0x00);
       }
+
 	  #if(EMS_TYPE == MASTER_EMS)
+     // Extract the data buffer from SPI2 if buffer is full - Master only
 		  else if ((can_intf2 & (0x01))) {
 			  Read_CAN2_ID();
 			  Read_Slave1_RXdata(&rx_id2, &base_adr);
 			  MCP2515_SPI2_RegModify(MCP_CANINTF, 0xFF, 0x00);
 		  }
 	  #endif
-      data_flag = 1;
-   }
-
-  now = HAL_GetTick();
-  if(now >= 10) {
-    data_flag = 0;
-  }
 
     /*  SEND  */
 //    if((send) & (start_tx)) {
