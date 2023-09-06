@@ -48,6 +48,8 @@ void Read_Slave1_RXdata(uint16* rx_id, uint8* base_adr);
 void getEMStime_Master(void);
 void getEMStime_Slave1(void);
 void Send_RXdata(uint16* rx_id);
+void SendData_SPI1(uint8 SIDH, uint8 SIDL, uint8 LENGTH);
+void SendData_SPI2(uint8 SIDH, uint8 SIDL, uint8 LENGTH);
 void Send_CloseDoor(void);
 void Send_OpenDoor(void);
 

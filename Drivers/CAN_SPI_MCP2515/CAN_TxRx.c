@@ -365,6 +365,49 @@ void Send_RXdata(uint16* rx_id) {
 
 }
 
+void SendData_SPI1(uint8 SIDH, uint8 SIDL, uint8 LENGTH) {
+    // Setup the registers
+    MCP2515_SPI1_RegModify(MCP_TXB0CTRL, MCP_TXB_ABTF_M | MCP_TXB_MLOA_M \
+    | MCP_TXB_TXERR_M | MCP_TXB_TXREQ_M, 0x00);
+    MCP2515_SPI1_RegModify(MCP_TXB0CTRL, 0x03, 0xFF);
+
+    /******************************************************************/
+    /* User will define the data and CAN ID later */
+
+    // MCP2515_SPI1_WriteReg(MCP_TXB0SIDH, SIDH, 1);  
+    // MCP2515_SPI1_WriteReg(MCP_TXB0SIDL, SIDL, 1);   
+    // MCP2515_SPI1_WriteReg(MCP_TXB0DLC, LENGTH, 1);
+
+    // for(int i = 0; i < LENGTH; i++) {
+    //     MCP2515_SPI1_WriteReg(TxDataAdrr[i], DATA_ARRAY, ONE_BYTE);
+    // }
+    
+    /*****************************************************************/
+
+    MCP2515_SPI1_WriteReg(MCP_TXB0CTRL, 0x08, 0x08);
+} 
+
+void SendData_SPI2(uint8 SIDH, uint8 SIDL, uint8 LENGTH) {
+    // Setup the registers
+    MCP2515_SPI2_RegModify(MCP_TXB0CTRL, MCP_TXB_ABTF_M | MCP_TXB_MLOA_M \
+    | MCP_TXB_TXERR_M | MCP_TXB_TXREQ_M, 0x00);
+    MCP2515_SPI2_RegModify(MCP_TXB0CTRL, 0x03, 0xFF);
+
+    /******************************************************************/
+    /* User will define the data and CAN ID later */
+
+    // MCP2515_SPI2_WriteReg(MCP_TXB0SIDH, SIDH, 1);  
+    // MCP2515_SPI2_WriteReg(MCP_TXB0SIDL, SIDL, 1);   
+    // MCP2515_SPI2_WriteReg(MCP_TXB0DLC, LENGTH, 1);
+
+    // for(int i = 0; i < LENGTH; i++) {
+    //     MCP2515_SPI2_WriteReg(TxDataAdrr[i], DATA_ARRAY, ONE_BYTE);
+    // }
+
+    /*****************************************************************/
+    MCP2515_SPI2_WriteReg(MCP_TXB0CTRL, 0x08, 0x08);
+} 
+
 uint8 close_cmd_data[2][8] = 
 {
     {CLOSE_CMD_BYTE0,CLOSE_CMD_BYTE1,CLOSE_CMD_BYTE2, CLOSE_CMD_BYTE3, CLOSE_CMD_BYTE4, CLOSE_CMD_BYTE5, CLOSE_CMD_BYTE6,OPEN_CMD_BYTE7},
