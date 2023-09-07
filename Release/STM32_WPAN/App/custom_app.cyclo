@@ -1,0 +1,4 @@
+custom_app.c:86:6:myTask	2
+custom_app.c:102:6:Custom_STM_App_Notification	1
+custom_app.c:144:6:Custom_APP_Notification	1
+custom_app.c:181:6:Custom_APP_Init	1

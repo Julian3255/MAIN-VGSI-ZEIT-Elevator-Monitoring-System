@@ -1,0 +1,10 @@
+../Drivers/CAN_SPI_MCP2515/CAN_TxRx.c:33:6:Read_CAN_ID	1
+../Drivers/CAN_SPI_MCP2515/CAN_TxRx.c:39:6:Read_CAN2_ID	1
+../Drivers/CAN_SPI_MCP2515/CAN_TxRx.c:45:6:Read_TXdata	6
+../Drivers/CAN_SPI_MCP2515/CAN_TxRx.c:77:6:Read_RXdata	22
+../Drivers/CAN_SPI_MCP2515/CAN_TxRx.c:162:6:Read_Slave1_RXdata	23
+../Drivers/CAN_SPI_MCP2515/CAN_TxRx.c:244:6:getEMStime_Master	1
+../Drivers/CAN_SPI_MCP2515/CAN_TxRx.c:253:6:getEMStime_Slave1	1
+../Drivers/CAN_SPI_MCP2515/CAN_TxRx.c:262:6:Send_RXdata	11
+../Drivers/CAN_SPI_MCP2515/CAN_TxRx.c:325:6:Send_CloseDoor	2
+../Drivers/CAN_SPI_MCP2515/CAN_TxRx.c:331:6:Send_OpenDoor	2
