@@ -18,6 +18,8 @@
 // Create the buffers to store the data for the Master and Slave 1 EMS boards
 EMS_Buffer  Master;
 EMS_Buffer  Slave_1;
+EMS_Buffer  Slave_2;
+EMS_Buffer  Slave_3;
 
 // Take the variables declared from main.c 
 extern uint8 rx_sidh;
@@ -78,6 +80,8 @@ extern uint8 tx_sidh;
 extern volatile int CAN_rx;
 extern EMS_data Master_EMS; 
 extern EMS_data Slave_EMS_1;
+extern EMS_data Slave_EMS_2;
+extern EMS_data Slave_EMS_3;
 extern volatile uint16 send_rx;
 
 // Read the received data from the CAN bus through SPI1 (apply for Master and Slave)
@@ -163,7 +167,7 @@ void Read_RXdata(uint16* rx_id, uint8* base_adr) {
     }  
 } 
 
-// Read the CAN data from Slave EMS using SPI2 (apply for Master only)
+// Read the CAN data from Slave EMS 1 using SPI2 (apply for Master only)
 void Read_Slave1_RXdata(uint16* rx_id, uint8* base_adr) {
 	MCP2515_SPI2_ReadReg(0x65, &rxLength2, 1);  // Extract the DLC length of the messsage frame received from the Slaves 
     switch(*rx_id)
