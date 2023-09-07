@@ -203,7 +203,7 @@ static SVCCTL_EvtAckStatus_t Custom_STM_Event_Handler(void *Event)
            MCP2515_SPI1_RegModify(MCP_TXB0CTRL, MCP_TXB_ABTF_M | MCP_TXB_MLOA_M \
            			  | MCP_TXB_TXERR_M | MCP_TXB_TXREQ_M, 0x00);
            		//MCP2515_ReadReg(MCP_TXB0CTRL, 0, 1);
-           		MCP2515_RegModify(MCP_TXB0CTRL, 0x03, 0xFF);
+           MCP2515_SPI1_RegModify(MCP_TXB0CTRL, 0x03, 0xFF);
 
            		/* Load the High and Low address and DLC byte length */
            MCP2515_SPI1_WriteReg(MCP_TXB0SIDH, 0x40, 1);  // 0x200 = 0010 0000 0000 -> 0100 0000    = 0x40
