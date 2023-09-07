@@ -131,11 +131,15 @@ uint8 base_adr = 0;
 uint8 TxBufferData_SPI1[8];
 uint8 TxBufferData_SPI2[8];
 
-
+// Initialize storing elements to obtain the data of the corresponding EMS
 EMS_data    Master_EMS;
 EMS_data    Slave_EMS_1;
+EMS_data    Slave_EMS_2;
+EMS_data    Slave_EMS_3;
 extern EMS_Buffer Master;
 extern EMS_Buffer Slave_1;
+extern EMS_Buffer Slave_2;
+extern EMS_Buffer Slave_3;
 
 /* Variables for debugging purposes*/
 uint8 count_master = 1;
@@ -260,51 +264,7 @@ int main(void)
 			  MCP2515_SPI2_RegModify(MCP_CANINTF, 0xFF, 0x00);
 		  }
 	  #endif
-
-    /*  SEND  */
-//    if((send) & (start_tx)) {
-//    /* Set TXREQ to initate message transmission and clear error bits in TXB0CTRL */
-//    MCP2515_SPI2_RegModify(MCP_TXB0CTRL, MCP_TXB_ABTF_M | MCP_TXB_MLOA_M \
-//        | MCP_TXB_TXERR_M | MCP_TXB_TXREQ_M, 0x00);
-//    MCP2515_SPI2_RegModify(MCP_TXB0CTRL, 0x03, 0xFF);
-//
-//    /* Load the High and Low address and DLC byte length */
-//    MCP2515_SPI2_WriteReg(MCP_TXB0SIDH, 0x40, 1);  // 0x200 = 0010 0000 0000 -> 0100 0000    = 0x40
-//    MCP2515_SPI2_WriteReg(MCP_TXB0SIDL, 0x00, 1);   // 000 = 0x00
-//    MCP2515_SPI2_WriteReg(MCP_TXB0DLC, 0x04, 1); // change to corespoind byte length
-//
-//
-//    /* Load the buffer data bytes */
-//    if(tx_open_door) {
-//      Send_OpenDoor();
-//      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
-//      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET);
-//      send_open++;
-//    }
-//
-//    if(tx_close_door) {
-//        Send_CloseDoor();
-//        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_SET);
-//        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
-//        send_close++;
-//    }
-//
-//      /* If the TXREQ bit in TX0CTRL is set -> Transmission requested
-//        Increment the tx_done counter to evaluate number of transmission
-//      */
-//      MCP2515_SPI2_WriteReg(MCP_TXB0CTRL, 0x08, 0x08);
-//      // MCP2515_SPI2_ReadStatus(&status);
-//      // MCP2515_SPI2_ReadReg(MCP_TXB0CTRL, &tx0_ctrl, 1);
-//      // Read the data bytes in the frame
-//      Read_TXdata(SPI_CHANNEL_1);
-//      if(status & (0x04)) {
-//        tx_done++;
-//        status = 0;
-//      }
-//
-//    // Reset send request to prevent unwanted transmission
-//    send = 0;
-//    }
+    
   #endif
   }
     /* USER CODE END WHILE */
