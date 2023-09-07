@@ -186,7 +186,7 @@ void Read_Slave1_RXdata(uint16* rx_id, uint8* base_adr) {
             }
         break;
 
-        /* If original data from slave is x481 - Indicate door status (closed or opeend)
+        /* If original data from slave is x481 - Indicate door status (closed or opened)
            -> Send the same data to the Master under CAN ID 0x31z 
            z = 1: Slave ID 1
            z = 2: Slave ID 2
@@ -320,7 +320,7 @@ void Send_RXdata(uint16* rx_id) {
         case 0x481:
             MCP2515_SPI2_WriteReg(MCP_TXB0SIDH, ID481_ADDR_SIDH, 1);  
             MCP2515_SPI2_WriteReg(MCP_TXB0SIDL, SLAVE_ID_SIDL, 1);   
-            MCP2515_SPI2_WriteReg(MCP_TXB0DLC, rxLength, 1); // change to corespoind byte length
+            MCP2515_SPI2_WriteReg(MCP_TXB0DLC, rxLength, 1); // change to correspond byte length
             for(int i = 0; i < rxLength; i++) {
                 MCP2515_SPI2_WriteReg(TxDataAdrr[i], Master.ID_481_buffer[i], ONE_BYTE);
             }
@@ -336,7 +336,7 @@ void Send_RXdata(uint16* rx_id) {
         case 0x490:
             MCP2515_SPI2_WriteReg(MCP_TXB0SIDH, ID490_ADDR_SIDH, 1);  
             MCP2515_SPI2_WriteReg(MCP_TXB0SIDL, SLAVE_ID_SIDL, 1);   
-            MCP2515_SPI2_WriteReg(MCP_TXB0DLC, rxLength, 1); // change to corespoind byte length
+            MCP2515_SPI2_WriteReg(MCP_TXB0DLC, rxLength, 1); // change to correspond byte length
             for(int i = 0; i < rxLength; i++) {
                 MCP2515_SPI2_WriteReg(TxDataAdrr[i], Master.ID_490_buffer[i], ONE_BYTE);
             }
@@ -352,7 +352,7 @@ void Send_RXdata(uint16* rx_id) {
         case 0x68B:
             MCP2515_SPI2_WriteReg(MCP_TXB0SIDH, ID68B_ADDR_SIDH, 1);  
             MCP2515_SPI2_WriteReg(MCP_TXB0SIDL, SLAVE_ID_SIDL, 1);   
-            MCP2515_SPI2_WriteReg(MCP_TXB0DLC, rxLength, 1); // change to corespoind byte length
+            MCP2515_SPI2_WriteReg(MCP_TXB0DLC, rxLength, 1); // change to correspond byte length
             for(int i = 0; i < rxLength; i++) {
                 MCP2515_SPI2_WriteReg(TxDataAdrr[i], Master.ID_68B_buffer[i], ONE_BYTE);
             }
