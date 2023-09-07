@@ -197,38 +197,29 @@ static SVCCTL_EvtAckStatus_t Custom_STM_Event_Handler(void *Event)
             /* USER CODE BEGIN CUSTOM_STM_Service_1_Char_1_ACI_GATT_ATTRIBUTE_MODIFIED_VSEVT_CODE */
             // Yang Junyoung
             // Toggle RED LED.
-//            HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-//
-//            // CAN bus data sending DOOR OPEN
-//            MCP2515_RegModify(MCP_TXB0CTRL, MCP_TXB_ABTF_M | MCP_TXB_MLOA_M \
-//            			  | MCP_TXB_TXERR_M | MCP_TXB_TXREQ_M, 0x00);
-//            		//MCP2515_ReadReg(MCP_TXB0CTRL, 0, 1);
-//            		MCP2515_RegModify(MCP_TXB0CTRL, 0x03, 0xFF);
-//
-//            		/* Load the High and Low address and DLC byte length */
-//            MCP2515_WriteReg(MCP_TXB0SIDH, 0x40, 1);  // 0x200 = 0010 0000 0000 -> 0100 0000    = 0x40
-//            MCP2515_WriteReg(MCP_TXB0SIDL, 0x00, 1);   // 000 = 0x00
-//            MCP2515_WriteReg(MCP_TXB0DLC, 0x04, 1); // change to corespoind byte length
-//
-//            MCP2515_WriteReg(MCP_TXB0_DATA0, 0x00, 1);
-//            MCP2515_WriteReg(MCP_TXB0_DATA1, 0x30, 1);
-//            MCP2515_WriteReg(MCP_TXB0_DATA2, 0x00, 1);
-//            MCP2515_WriteReg(MCP_TXB0_DATA3, 0xF0, 1);
-//
-//
-//    	    /* If the TXREQ bit in TX0CTRL is set -> Transmission requested
-//    	      Increment the tx_done counter to evaluate number of transmission
-//    	    */
-//    	    MCP2515_RegModify(MCP_TXB0CTRL, 0x08, 0x08);
-//    	    MCP2515_ReadStatus(&status);
-//    	    MCP2515_ReadReg(MCP_TXB0CTRL, &tx0_ctrl, 1);
-//    	    // Read the data bytes in the frame
-    	    //Read_TXdata(4);
-//    	    if(status & (0x04)) {
-//    	      tx_done++;
-//    	      status = 0;
-//    	    }
+           HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 
+           // CAN bus data sending DOOR OPEN
+           MCP2515_SPI1_RegModify(MCP_TXB0CTRL, MCP_TXB_ABTF_M | MCP_TXB_MLOA_M \
+           			  | MCP_TXB_TXERR_M | MCP_TXB_TXREQ_M, 0x00);
+           		//MCP2515_ReadReg(MCP_TXB0CTRL, 0, 1);
+           		MCP2515_RegModify(MCP_TXB0CTRL, 0x03, 0xFF);
+
+           		/* Load the High and Low address and DLC byte length */
+           MCP2515_SPI1_WriteReg(MCP_TXB0SIDH, 0x40, 1);  // 0x200 = 0010 0000 0000 -> 0100 0000    = 0x40
+           MCP2515_SPI1_WriteReg(MCP_TXB0SIDL, 0x00, 1);   // 000 = 0x00
+           MCP2515_SPI1_WriteReg(MCP_TXB0DLC, 0x04, 1); // change to corespoind byte length
+
+           MCP2515_SPI1_WriteReg(MCP_TXB0_DATA0, 0x00, 1);
+           MCP2515_SPI1_WriteReg(MCP_TXB0_DATA1, 0x30, 1);
+           MCP2515_SPI1_WriteReg(MCP_TXB0_DATA2, 0x00, 1);
+           MCP2515_SPI1_WriteReg(MCP_TXB0_DATA3, 0xF0, 1);
+
+
+   	    /* If the TXREQ bit in TX0CTRL is set -> Transmission requested
+   	      Increment the tx_done counter to evaluate number of transmission
+   	    */
+   	    MCP2515_SPI1_RegModify(MCP_TXB0CTRL, 0x08, 0x08);
 
             /* USER CODE END CUSTOM_STM_Service_1_Char_1_ACI_GATT_ATTRIBUTE_MODIFIED_VSEVT_CODE */
           } /* if (attribute_modified->Attr_Handle == (CustomContext.CustomVgsicharwriteHdle + CHARACTERISTIC_VALUE_ATTRIBUTE_OFFSET))*/
