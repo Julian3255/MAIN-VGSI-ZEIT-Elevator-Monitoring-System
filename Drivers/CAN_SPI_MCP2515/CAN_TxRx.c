@@ -108,7 +108,7 @@ void Read_RXdata(uint16* rx_id, uint8* base_adr) {
             for(int j = rxLength; j < 8; j++) {
                 Master.ID_481_buffer[j] = 0x00;
             }
-			if(Master.ID_481_buffer[0] == 0x0E) {
+			if((Master.ID_481_buffer[1] == 0x04) || (Master.ID_481_buffer[1] == 0x02)) {
 				if(Master.ID_481_buffer[5] == 0x00) {
 					Master_EMS.door_status = DOOR_OPENED;
 				}
@@ -203,7 +203,7 @@ void Read_Slave1_RXdata(uint16* rx_id, uint8* base_adr) {
             for(int j = rxLength2; j < 8; j++) {
                 Slave_1.ID_481_buffer[j] = 0x00;
             }
-            if(Slave_1.ID_481_buffer[0] == 0x0E) {
+            if((Slave_1.ID_481_buffer[1] == 0x04)||(Slave_1.ID_481_buffer[1] == 0x02)) {
                 if(Slave_1.ID_481_buffer[5] == 0x00) {
                     Slave_EMS_1.door_status = DOOR_OPENED;
                 }
