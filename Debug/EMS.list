@@ -31751,7 +31751,7 @@ SVCCTL_UserEvtFlowStatus_t SVCCTL_App_Notification(void *p_Pckt)
                       ((aci_gap_numeric_comparison_value_event_rp0 *)(p_blecore_evt->data))->Numeric_Value);
  800bed8:	69fb      	ldr	r3, [r7, #28]
  800beda:	3302      	adds	r3, #2
-          APP_DBG_MSG("     - numeric_value = %d\n",
+          APP_DBG_MSG("     - numeric_value = %ld\n",
  800bedc:	f8d3 3002 	ldr.w	r3, [r3, #2]
  800bee0:	4619      	mov	r1, r3
  800bee2:	482f      	ldr	r0, [pc, #188]	; (800bfa0 <SVCCTL_App_Notification+0x354>)
@@ -32306,7 +32306,7 @@ static void Ble_Hci_Gap_Gatt_Init(void)
  800c21a:	609a      	str	r2, [r3, #8]
   BleApplicationContext.BleApplicationContext_legacy.bleSecurityParam.bonding_mode = CFG_BONDING_MODE;
  800c21c:	4b36      	ldr	r3, [pc, #216]	; (800c2f8 <Ble_Hci_Gap_Gatt_Init+0x2f8>)
- 800c21e:	2200      	movs	r2, #0
+ 800c21e:	2201      	movs	r2, #1
  800c220:	709a      	strb	r2, [r3, #2]
   /* USER CODE BEGIN Ble_Hci_Gap_Gatt_Init_1*/
 
