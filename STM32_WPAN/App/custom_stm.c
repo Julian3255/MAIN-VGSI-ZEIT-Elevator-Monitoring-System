@@ -331,7 +331,7 @@ void SVCCTL_InitCustomSvc(void)
   ret = aci_gatt_add_char(CustomContext.CustomVgsizeitemsHdle,
                           UUID_TYPE_128, &uuid,
                           SizeVgsicharwrite,
-                          CHAR_PROP_WRITE,
+                          CHAR_PROP_READ | CHAR_PROP_WRITE,
                           ATTR_PERMISSION_AUTHEN_READ,
                           GATT_NOTIFY_ATTRIBUTE_WRITE,
                           0x10,

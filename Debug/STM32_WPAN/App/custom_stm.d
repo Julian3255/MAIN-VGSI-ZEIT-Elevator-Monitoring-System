@@ -106,9 +106,9 @@ STM32_WPAN/App/custom_stm.o: ../STM32_WPAN/App/custom_stm.c \
  ../Middlewares/ST/STM32_WPAN/utilities/dbg_trace.h \
  ../STM32_WPAN/App/custom_stm.h ../Core/Inc/main.h ../Core/Inc/app_conf.h \
  ../Core/Inc/app_entry.h ../Core/Inc/app_common.h \
- C:/Users/mrhuy/Documents/EMS/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/mcp2515.h \
- C:/Users/mrhuy/Documents/EMS/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/typedef.h \
- C:/Users/mrhuy/Documents/EMS/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/CAN_TxRx.h
+ C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/mcp2515.h \
+ C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/typedef.h \
+ C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/CAN_TxRx.h
 ../Middlewares/ST/STM32_WPAN/ble/svc/Src/common_blesvc.h:
 ../Middlewares/ST/STM32_WPAN/ble/ble_common.h:
 ../STM32_WPAN/App/ble_conf.h:
@@ -221,6 +221,6 @@ STM32_WPAN/App/custom_stm.o: ../STM32_WPAN/App/custom_stm.c \
 ../Core/Inc/app_conf.h:
 ../Core/Inc/app_entry.h:
 ../Core/Inc/app_common.h:
-C:/Users/mrhuy/Documents/EMS/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/mcp2515.h:
-C:/Users/mrhuy/Documents/EMS/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/typedef.h:
-C:/Users/mrhuy/Documents/EMS/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/CAN_TxRx.h:
+C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/mcp2515.h:
+C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/typedef.h:
+C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/CAN_TxRx.h:

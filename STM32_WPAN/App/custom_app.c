@@ -111,6 +111,12 @@ void Custom_STM_App_Notification(Custom_STM_App_Notification_evt_t *pNotificatio
     /* USER CODE END CUSTOM_STM_App_Notification_Custom_Evt_Opcode */
 
     /* VGSIZEITEMS */
+    case CUSTOM_STM_VGSICHARWRITE_READ_EVT:
+      /* USER CODE BEGIN CUSTOM_STM_VGSICHARWRITE_READ_EVT */
+
+      /* USER CODE END CUSTOM_STM_VGSICHARWRITE_READ_EVT */
+      break;
+
     case CUSTOM_STM_VGSICHARWRITE_WRITE_EVT:
       /* USER CODE BEGIN CUSTOM_STM_VGSICHARWRITE_WRITE_EVT */
 

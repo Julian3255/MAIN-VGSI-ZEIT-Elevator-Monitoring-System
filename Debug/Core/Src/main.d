@@ -56,9 +56,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Middlewares/ST/STM32_WPAN/ble/core/ble_bufsize.h \
  ../Core/Inc/app_entry.h ../Core/Inc/app_common.h \
  ../Core/Inc/stm32wbxx_it.h \
- C:/Users/mrhuy/Documents/EMS/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/mcp2515.h \
- C:/Users/mrhuy/Documents/EMS/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/typedef.h \
- C:/Users/mrhuy/Documents/EMS/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/CAN_TxRx.h \
+ C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/mcp2515.h \
+ C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/typedef.h \
+ C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/CAN_TxRx.h \
  ../Utilities/sequencer/stm32_seq.h
 ../Core/Inc/main.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h:
@@ -120,7 +120,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/app_entry.h:
 ../Core/Inc/app_common.h:
 ../Core/Inc/stm32wbxx_it.h:
-C:/Users/mrhuy/Documents/EMS/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/mcp2515.h:
-C:/Users/mrhuy/Documents/EMS/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/typedef.h:
-C:/Users/mrhuy/Documents/EMS/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/CAN_TxRx.h:
+C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/mcp2515.h:
+C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/typedef.h:
+C:/Users/YANGJUNYOUNG/Documents/GitHub/MAIN-VGSI-ZEIT-Elevator-Monitoring-System/Drivers/CAN_SPI_MCP2515/CAN_TxRx.h:
 ../Utilities/sequencer/stm32_seq.h:

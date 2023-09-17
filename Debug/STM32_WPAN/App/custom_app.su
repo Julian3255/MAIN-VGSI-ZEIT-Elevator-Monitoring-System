@@ -1,6 +1,6 @@
 ../STM32_WPAN/App/custom_app.c:86:6:myTask	8	static
 ../STM32_WPAN/App/custom_app.c:102:6:Custom_STM_App_Notification	16	static
-../STM32_WPAN/App/custom_app.c:144:6:Custom_APP_Notification	16	static
-../STM32_WPAN/App/custom_app.c:181:6:Custom_APP_Init	4	static
-../STM32_WPAN/App/custom_app.c:200:6:Custom_Vgsizeitread_Update_Char	16	static
-../STM32_WPAN/App/custom_app.c:219:6:Custom_Vgsizeitread_Send_Notification	16	static
+../STM32_WPAN/App/custom_app.c:150:6:Custom_APP_Notification	16	static
+../STM32_WPAN/App/custom_app.c:187:6:Custom_APP_Init	4	static
+../STM32_WPAN/App/custom_app.c:206:6:Custom_Vgsizeitread_Update_Char	16	static
+../STM32_WPAN/App/custom_app.c:225:6:Custom_Vgsizeitread_Send_Notification	16	static
