@@ -25,11 +25,12 @@
 #include "stm32wbxx_hal_spi.h"
 #include "stm32wbxx_it.h"
 
+// Include header files for the CAN Bus protocol using MCP2515.
 #include "mcp2515.h"
 #include "CAN_TxRx.h"
-// Yang Junyoung
-#include "stm32_seq.h"
 
+// Include a header file for the Sequencer.
+#include "stm32_seq.h"
 
 /* USER CODE END Includes */
 
@@ -227,7 +228,7 @@ int main(void)
 
   while (1)
   {
-    // Yang Junyoung
+    // Call to run the sequencer.
     UTIL_SEQ_Run(UTIL_SEQ_DEFAULT);
 
     /* Read value from SW2 and SW3 to get open and close door signal */
@@ -565,7 +566,7 @@ void MX_USART1_UART_Init(void)
   huart1.Init.Parity = UART_PARITY_NONE;
   huart1.Init.Mode = UART_MODE_TX_RX;
   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_8;
   huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
   huart1.Init.ClockPrescaler = UART_PRESCALER_DIV1;
   huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;

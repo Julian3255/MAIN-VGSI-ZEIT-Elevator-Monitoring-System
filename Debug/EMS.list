@@ -47,11 +47,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  21 .debug_line   000329e1  00000000  00000000  0008a848  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_str    000fc4e1  00000000  00000000  000bd229  2**0
+ 22 .debug_str    000fc4df  00000000  00000000  000bd229  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 23 .debug_frame  0000bf70  00000000  00000000  001b970c  2**2
+ 23 .debug_frame  0000bf70  00000000  00000000  001b9708  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 24 .debug_line_str 0000007f  00000000  00000000  001c567c  2**0
+ 24 .debug_line_str 0000007f  00000000  00000000  001c5678  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -31751,7 +31751,7 @@ SVCCTL_UserEvtFlowStatus_t SVCCTL_App_Notification(void *p_Pckt)
                       ((aci_gap_numeric_comparison_value_event_rp0 *)(p_blecore_evt->data))->Numeric_Value);
  800bed8:	69fb      	ldr	r3, [r7, #28]
  800beda:	3302      	adds	r3, #2
-          APP_DBG_MSG("     - numeric_value = %ld\n",
+          APP_DBG_MSG("     - numeric_value = %d\n",
  800bedc:	f8d3 3002 	ldr.w	r3, [r3, #2]
  800bee0:	4619      	mov	r1, r3
  800bee2:	482f      	ldr	r0, [pc, #188]	; (800bfa0 <SVCCTL_App_Notification+0x354>)
@@ -32253,7 +32253,7 @@ static void Ble_Hci_Gap_Gatt_Init(void)
    */
   BleApplicationContext.BleApplicationContext_legacy.bleSecurityParam.ioCapability = CFG_IO_CAPABILITY;
  800c1d2:	4b49      	ldr	r3, [pc, #292]	; (800c2f8 <Ble_Hci_Gap_Gatt_Init+0x2f8>)
- 800c1d4:	2200      	movs	r2, #0
+ 800c1d4:	2201      	movs	r2, #1
  800c1d6:	701a      	strb	r2, [r3, #0]
   ret = aci_gap_set_io_capability(BleApplicationContext.BleApplicationContext_legacy.bleSecurityParam.ioCapability);
  800c1d8:	4b47      	ldr	r3, [pc, #284]	; (800c2f8 <Ble_Hci_Gap_Gatt_Init+0x2f8>)
@@ -32286,7 +32286,7 @@ static void Ble_Hci_Gap_Gatt_Init(void)
    */
   BleApplicationContext.BleApplicationContext_legacy.bleSecurityParam.mitm_mode = CFG_MITM_PROTECTION;
  800c1fe:	4b3e      	ldr	r3, [pc, #248]	; (800c2f8 <Ble_Hci_Gap_Gatt_Init+0x2f8>)
- 800c200:	2200      	movs	r2, #0
+ 800c200:	2201      	movs	r2, #1
  800c202:	705a      	strb	r2, [r3, #1]
   BleApplicationContext.BleApplicationContext_legacy.bleSecurityParam.encryptionKeySizeMin = CFG_ENCRYPTION_KEY_SIZE_MIN;
  800c204:	4b3c      	ldr	r3, [pc, #240]	; (800c2f8 <Ble_Hci_Gap_Gatt_Init+0x2f8>)
