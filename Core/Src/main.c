@@ -90,20 +90,22 @@ unsigned long debounceDelay = 50;    // the debounce time; increase if the outpu
 int now = 0, then = 0;
 int second = 0;
 
-
+// Variables for button press - close or open door command (no longer used)
 volatile int sw2_count = 0, sw3_count = 0;
 volatile int tx_close_door = 0, tx_open_door = 0;
 volatile int send = 0, send_open = 0, send_close = 0;
 volatile int start_tx = 0;
 
 /* Variables for CAN transmission*/
-volatile uint16 rx_done = 0;
-volatile uint16 tx_done = 0;
-volatile uint16 send_rx = 0;
-volatile int rx_flag = 0;
+volatile uint16 rx_done = 0;  // Number of completed reception time
+volatile uint16 tx_done = 0;  // NUmber of complete transmission time 
+volatile uint16 send_rx = 0;  // Number of message transmission from extracted data (for slaves)
+volatile int rx_flag = 0;     // Indicate the reception is done
 uint8 data_count = 0;
-volatile uint8 rxLength;
-volatile uint8 rxLength2;
+volatile uint8 rxLength;      // Number of bytes for the message frame (from SPI1)
+volatile uint8 rxLength2;     // Number of bytes for the message frame (from SPI2)
+
+// Address value for the data bytes in the MCP2515 module
 uint8 TxDataAdrr[8] =
 {
     MCP_TXB0_DATA0,
@@ -116,21 +118,17 @@ uint8 TxDataAdrr[8] =
     MCP_TXB0_DATA7
 };
 
-uint8 rx_sidh = 0;
-uint8 rx_sidl = 0;
-uint8 rx_sidh2 = 0;
-uint8 rx_sidl2 = 0;
-uint8 rx_sidh_status1 = 0;
-uint8 rx_sidh_status2 = 0;
-uint8 rx_sidhl_status = 0;
-uint16 rx_id = 0;
-uint16 rx_id2 = 0;
-uint8 func_code = 0;
-uint8 base_adr = 0;
+uint8 rx_sidh = 0;              // SIDH address of the CAN frame (8 MSB bit of adress) for SPI1
+uint8 rx_sidl = 0;              // SIDL address of the CAN frame (3 LSB bit of adress) for SPI1
+uint8 rx_sidh2 = 0;             // SIDH address of the CAN frame (8 MSB bit of adress) for SPI2
+uint8 rx_sidl2 = 0;             // SIDL address of the CAN frame (3 MSB bit of adress) for SPI2
+uint16 rx_id = 0;               // The complete adress of the CAN frame (by combining SIDH + SIDL) for SPI1
+uint16 rx_id2 = 0;              // The complete adress of the CAN frame (by combining SIDH + SIDL) for SPI2
+uint8 base_adr = 0;             // This variable holds the base address of the data bytes in the MCP2515
 
 
-uint8 TxBufferData_SPI1[8];
-uint8 TxBufferData_SPI2[8];
+uint8 TxBufferData_SPI1[8];     // Array to hold the data bytes of the transmitted data from SPI1
+uint8 TxBufferData_SPI2[8];     // Array to hold the data bytes of the transmitted data from SPI2
 
 // Initialize storing elements to obtain the data of the corresponding EMS
 EMS_data    Master_EMS;
@@ -147,25 +145,8 @@ uint8 count_master = 1;
 uint8 temp1;
 volatile int data_flag = 0;
 volatile int CAN_rx = 0;
-uint8 tec = 0;
-uint16 rec = 0;
-uint8 eflg = 0;
-uint8 can_inte = 0;
-uint8 can_intf = 0;
-uint8 can_intf2 = 0;
-uint8 can_intf_clr = 0;
-uint8 can_ctrl = 0;
-uint8 rxb0ctrl = 0;
-uint8 rxb1ctrl = 0;
-uint8 canstat = 0;
-uint8 status = 0;
-uint16 rx_status = 0;
-uint8 cnf1, cnf2, cnf3;
-uint8 tx0_ctrl_b4 = 0;
-uint8 tx0_ctrl = 0;
-uint8 tx0_sidh = 0, tx0_sidl = 0;
-uint8 tx0_dlc = 0;
-uint8 tx0_data[8];
+uint8 can_intf = 0;           // This variable holds the interrupt status of SPI1
+uint8 can_intf2 = 0;          // This variable holds the interrupt status of SPI2
 
 /* USER CODE END 0 */
 
