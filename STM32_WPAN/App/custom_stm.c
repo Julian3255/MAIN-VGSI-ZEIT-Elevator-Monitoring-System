@@ -26,6 +26,7 @@
 #include "main.h"
 #include "mcp2515.h"
 #include "CAN_TxRx.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -208,7 +209,7 @@ static SVCCTL_EvtAckStatus_t Custom_STM_Event_Handler(void *Event)
            		/* Load the High and Low address and DLC byte length */
            MCP2515_SPI1_WriteReg(MCP_TXB0SIDH, 0x40, 1);  // 0x200 = 0010 0000 0000 -> 0100 0000    = 0x40
            MCP2515_SPI1_WriteReg(MCP_TXB0SIDL, 0x00, 1);   // 000 = 0x00
-           MCP2515_SPI1_WriteReg(MCP_TXB0DLC, 0x04, 1); // change to corespoind byte length
+           MCP2515_SPI1_WriteReg(MCP_TXB0DLC, 0x04, 1); // change to correspond byte length
 
            MCP2515_SPI1_WriteReg(MCP_TXB0_DATA0, 0x00, 1);
            MCP2515_SPI1_WriteReg(MCP_TXB0_DATA1, 0x30, 1);

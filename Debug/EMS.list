@@ -23,9 +23,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, DATA
   9 SYSTEM_DRIVER_CONTEXT 00000011  2000094c  08010108  0002094c  2**2
                   CONTENTS, ALLOC, LOAD, DATA
- 10 .bss          000019e8  20000960  08010119  00020960  2**2
+ 10 .bss          000019d8  20000960  08010119  00020960  2**2
                   ALLOC
- 11 ._user_heap_stack 00000600  20002348  08010119  00022348  2**0
+ 11 ._user_heap_stack 00000600  20002338  08010119  00022338  2**0
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  0002095d  2**0
                   CONTENTS, READONLY
@@ -35,23 +35,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  15 .comment      00000043  00000000  00000000  0002098d  2**0
                   CONTENTS, READONLY
- 16 .debug_info   000305a0  00000000  00000000  000209d0  2**0
+ 16 .debug_info   00030408  00000000  00000000  000209d0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_abbrev 00006be5  00000000  00000000  00050f70  2**0
+ 17 .debug_abbrev 00006bce  00000000  00000000  00050dd8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_aranges 00002bf0  00000000  00000000  00057b58  2**3
+ 18 .debug_aranges 00002bf0  00000000  00000000  000579a8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_rnglists 00002194  00000000  00000000  0005a748  2**0
+ 19 .debug_rnglists 00002194  00000000  00000000  0005a598  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_macro  0002df6c  00000000  00000000  0005c8dc  2**0
+ 20 .debug_macro  0002df6c  00000000  00000000  0005c72c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line   000329e1  00000000  00000000  0008a848  2**0
+ 21 .debug_line   000329e1  00000000  00000000  0008a698  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_str    000fc4df  00000000  00000000  000bd229  2**0
+ 22 .debug_str    000fc416  00000000  00000000  000bd079  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 23 .debug_frame  0000bf70  00000000  00000000  001b9708  2**2
+ 23 .debug_frame  0000bf70  00000000  00000000  001b9490  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 24 .debug_line_str 0000007f  00000000  00000000  001c5678  2**0
+ 24 .debug_line_str 0000007f  00000000  00000000  001c5400  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1970,7 +1970,7 @@ void MX_APPE_Init(void)
  8001098:	bf00      	nop
 }
  800109a:	bd80      	pop	{r7, pc}
- 800109c:	20002000 	.word	0x20002000
+ 800109c:	20001ffc 	.word	0x20001ffc
 
 080010a0 <Init_Smps>:
 
@@ -3780,7 +3780,7 @@ static void RestartWakeupCounter(uint16_t Value)
  8001a66:	bd80      	pop	{r7, pc}
  8001a68:	20000a10 	.word	0x20000a10
  8001a6c:	20000a15 	.word	0x20000a15
- 8001a70:	20002000 	.word	0x20002000
+ 8001a70:	20001ffc 	.word	0x20001ffc
  8001a74:	58000800 	.word	0x58000800
  8001a78:	40002800 	.word	0x40002800
 
@@ -4003,7 +4003,7 @@ static void RescheduleTimerList(void)
  8001b94:	46bd      	mov	sp, r7
  8001b96:	bd80      	pop	{r7, pc}
  8001b98:	40002800 	.word	0x40002800
- 8001b9c:	20002000 	.word	0x20002000
+ 8001b9c:	20001ffc 	.word	0x20001ffc
  8001ba0:	20000a0c 	.word	0x20000a0c
  8001ba4:	2000097c 	.word	0x2000097c
  8001ba8:	20000a14 	.word	0x20000a14
@@ -4283,7 +4283,7 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
  8001d26:	46bd      	mov	sp, r7
  8001d28:	bd80      	pop	{r7, pc}
  8001d2a:	bf00      	nop
- 8001d2c:	20002000 	.word	0x20002000
+ 8001d2c:	20001ffc 	.word	0x20001ffc
  8001d30:	20000a0c 	.word	0x20000a0c
  8001d34:	2000097c 	.word	0x2000097c
  8001d38:	20000a14 	.word	0x20000a14
@@ -4564,7 +4564,7 @@ void HW_TS_Init(HW_TS_InitMode_t TimerInitMode, RTC_HandleTypeDef *phrtc)
  8001ec2:	46bd      	mov	sp, r7
  8001ec4:	bd80      	pop	{r7, pc}
  8001ec6:	bf00      	nop
- 8001ec8:	20002000 	.word	0x20002000
+ 8001ec8:	20001ffc 	.word	0x20001ffc
  8001ecc:	40002800 	.word	0x40002800
  8001ed0:	20000a15 	.word	0x20000a15
  8001ed4:	20000a16 	.word	0x20000a16
@@ -4756,7 +4756,7 @@ void HW_TS_Stop(uint8_t timer_id)
  8001fde:	46bd      	mov	sp, r7
  8001fe0:	bd80      	pop	{r7, pc}
  8001fe2:	bf00      	nop
- 8001fe4:	20002000 	.word	0x20002000
+ 8001fe4:	20001ffc 	.word	0x20001ffc
  8001fe8:	2000097c 	.word	0x2000097c
  8001fec:	20000a0c 	.word	0x20000a0c
  8001ff0:	40002800 	.word	0x40002800
@@ -4942,7 +4942,7 @@ void HW_TS_Start(uint8_t timer_id, uint32_t timeout_ticks)
  80020f4:	bd80      	pop	{r7, pc}
  80020f6:	bf00      	nop
  80020f8:	2000097c 	.word	0x2000097c
- 80020fc:	20002000 	.word	0x20002000
+ 80020fc:	20001ffc 	.word	0x20001ffc
  8002100:	20000a0c 	.word	0x20000a0c
  8002104:	20000a0d 	.word	0x20000a0d
 
@@ -5081,7 +5081,7 @@ hw_status_t HW_UART_Transmit_DMA(hw_uart_id_t hw_uart_id, uint8_t *p_data, uint1
  80021a0:	46bd      	mov	sp, r7
  80021a2:	bd80      	pop	{r7, pc}
  80021a4:	20001d6c 	.word	0x20001d6c
- 80021a8:	20001f6c 	.word	0x20001f6c
+ 80021a8:	20001f68 	.word	0x20001f68
  80021ac:	40013800 	.word	0x40013800
 
 080021b0 <HAL_UART_TxCpltCallback>:
@@ -5602,7 +5602,7 @@ static void MX_IPCC_Init(void)
  800246e:	bf00      	nop
  8002470:	bd80      	pop	{r7, pc}
  8002472:	bf00      	nop
- 8002474:	20001e3c 	.word	0x20001e3c
+ 8002474:	20001e38 	.word	0x20001e38
  8002478:	58000c00 	.word	0x58000c00
 
 0800247c <MX_RF_Init>:
@@ -5705,7 +5705,7 @@ static void MX_RTC_Init(void)
  80024e6:	bf00      	nop
  80024e8:	bd80      	pop	{r7, pc}
  80024ea:	bf00      	nop
- 80024ec:	20002000 	.word	0x20002000
+ 80024ec:	20001ffc 	.word	0x20001ffc
  80024f0:	40002800 	.word	0x40002800
 
 080024f4 <MX_SPI1_Init>:
@@ -5796,7 +5796,7 @@ static void MX_SPI1_Init(void)
  8002562:	bf00      	nop
  8002564:	bd80      	pop	{r7, pc}
  8002566:	bf00      	nop
- 8002568:	20002064 	.word	0x20002064
+ 8002568:	20002054 	.word	0x20002054
  800256c:	40013000 	.word	0x40013000
 
 08002570 <MX_SPI2_Init>:
@@ -5998,7 +5998,7 @@ void MX_USART1_UART_Init(void)
  800267a:	bf00      	nop
  800267c:	bd80      	pop	{r7, pc}
  800267e:	bf00      	nop
- 8002680:	20001f6c 	.word	0x20001f6c
+ 8002680:	20001f68 	.word	0x20001f68
  8002684:	40013800 	.word	0x40013800
 
 08002688 <MX_DMA_Init>:
@@ -6328,7 +6328,7 @@ int SW2_CloseButton_Scan(void) {
  8002848:	20000008 	.word	0x20000008
  800284c:	20000a1c 	.word	0x20000a1c
  8002850:	20000010 	.word	0x20000010
- 8002854:	20001ed8 	.word	0x20001ed8
+ 8002854:	20001ed4 	.word	0x20001ed4
  8002858:	20000a24 	.word	0x20000a24
  800285c:	20000a2c 	.word	0x20000a2c
  8002860:	20000a30 	.word	0x20000a30
@@ -6451,7 +6451,7 @@ int SW3_OpenButton_Scan(void) {
  8002900:	2000000c 	.word	0x2000000c
  8002904:	20000a20 	.word	0x20000a20
  8002908:	20000010 	.word	0x20000010
- 800290c:	200020c8 	.word	0x200020c8
+ 800290c:	200020b8 	.word	0x200020b8
  8002910:	20000a28 	.word	0x20000a28
  8002914:	20000a2c 	.word	0x20000a2c
  8002918:	20000a30 	.word	0x20000a30
@@ -7144,9 +7144,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
  8002d0e:	bd80      	pop	{r7, pc}
  8002d10:	40013800 	.word	0x40013800
  8002d14:	48000400 	.word	0x48000400
- 8002d18:	20001ee0 	.word	0x20001ee0
+ 8002d18:	20001edc 	.word	0x20001edc
  8002d1c:	40020008 	.word	0x40020008
- 8002d20:	20001e78 	.word	0x20001e78
+ 8002d20:	20001e74 	.word	0x20001e74
  8002d24:	4002001c 	.word	0x4002001c
 
 08002d28 <NMI_Handler>:
@@ -7349,7 +7349,7 @@ void DMA1_Channel1_IRQHandler(void)
  8002d92:	bf00      	nop
  8002d94:	bd80      	pop	{r7, pc}
  8002d96:	bf00      	nop
- 8002d98:	20001ee0 	.word	0x20001ee0
+ 8002d98:	20001edc 	.word	0x20001edc
 
 08002d9c <DMA1_Channel2_IRQHandler>:
 
@@ -7373,7 +7373,7 @@ void DMA1_Channel2_IRQHandler(void)
  8002da6:	bf00      	nop
  8002da8:	bd80      	pop	{r7, pc}
  8002daa:	bf00      	nop
- 8002dac:	20001e78 	.word	0x20001e78
+ 8002dac:	20001e74 	.word	0x20001e74
 
 08002db0 <SPI1_IRQHandler>:
 
@@ -7397,7 +7397,7 @@ void SPI1_IRQHandler(void)
  8002dba:	bf00      	nop
  8002dbc:	bd80      	pop	{r7, pc}
  8002dbe:	bf00      	nop
- 8002dc0:	20002064 	.word	0x20002064
+ 8002dc0:	20002054 	.word	0x20002054
 
 08002dc4 <SPI2_IRQHandler>:
 
@@ -7445,7 +7445,7 @@ void USART1_IRQHandler(void)
  8002de2:	bf00      	nop
  8002de4:	bd80      	pop	{r7, pc}
  8002de6:	bf00      	nop
- 8002de8:	20001f6c 	.word	0x20001f6c
+ 8002de8:	20001f68 	.word	0x20001f68
 
 08002dec <IPCC_C1_RX_IRQHandler>:
 
@@ -7722,7 +7722,7 @@ void *_sbrk(ptrdiff_t incr)
  8002f10:	20030000 	.word	0x20030000
  8002f14:	00000400 	.word	0x00000400
  8002f18:	20000a4c 	.word	0x20000a4c
- 8002f1c:	20002348 	.word	0x20002348
+ 8002f1c:	20002338 	.word	0x20002338
 
 08002f20 <SystemInit>:
   * @brief  Setup the microcontroller system.
@@ -7924,7 +7924,7 @@ LoopForever:
  8003028:	08010119 	.word	0x08010119
   INIT_BSS _sbss, _ebss
  800302c:	20000960 	.word	0x20000960
- 8003030:	20002348 	.word	0x20002348
+ 8003030:	20002338 	.word	0x20002338
 
 08003034 <ADC1_IRQHandler>:
  * @retval None
@@ -8347,8 +8347,8 @@ void Read_RXdata(uint16* rx_id, uint8* base_adr) {
  80032ec:	bd80      	pop	{r7, pc}
  80032ee:	bf00      	nop
  80032f0:	20001d9c 	.word	0x20001d9c
- 80032f4:	200020f0 	.word	0x200020f0
- 80032f8:	20002024 	.word	0x20002024
+ 80032f4:	200020e0 	.word	0x200020e0
+ 80032f8:	20002020 	.word	0x20002020
 
 080032fc <Read_Slave1_RXdata>:
 
@@ -8689,8 +8689,8 @@ void Read_Slave1_RXdata(uint16* rx_id, uint8* base_adr) {
  800353a:	3728      	adds	r7, #40	; 0x28
  800353c:	46bd      	mov	sp, r7
  800353e:	bd80      	pop	{r7, pc}
- 8003540:	200020cd 	.word	0x200020cd
- 8003544:	20002110 	.word	0x20002110
+ 8003540:	200020bc 	.word	0x200020bc
+ 8003544:	20002100 	.word	0x20002100
  8003548:	20001e04 	.word	0x20001e04
 
 0800354c <getEMStime_Master>:
@@ -8740,8 +8740,8 @@ void getEMStime_Master(void) {
  8003590:	46bd      	mov	sp, r7
  8003592:	f85d 7b04 	ldr.w	r7, [sp], #4
  8003596:	4770      	bx	lr
- 8003598:	200020f0 	.word	0x200020f0
- 800359c:	20002024 	.word	0x20002024
+ 8003598:	200020e0 	.word	0x200020e0
+ 800359c:	20002020 	.word	0x20002020
 
 080035a0 <getEMStime_Slave1>:
 
@@ -8790,7 +8790,7 @@ void getEMStime_Slave1(void) {
  80035e4:	46bd      	mov	sp, r7
  80035e6:	f85d 7b04 	ldr.w	r7, [sp], #4
  80035ea:	4770      	bx	lr
- 80035ec:	20002110 	.word	0x20002110
+ 80035ec:	20002100 	.word	0x20002100
  80035f0:	20001e04 	.word	0x20001e04
 
 080035f4 <SPI1_Tx>:
@@ -8817,7 +8817,7 @@ static void SPI1_Tx(uint8_t data)
  800360e:	46bd      	mov	sp, r7
  8003610:	bd80      	pop	{r7, pc}
  8003612:	bf00      	nop
- 8003614:	20002064 	.word	0x20002064
+ 8003614:	20002054 	.word	0x20002054
 
 08003618 <SPI1_Rx>:
 
@@ -8841,7 +8841,7 @@ static uint8_t SPI1_Rx(void)
  800362e:	3708      	adds	r7, #8
  8003630:	46bd      	mov	sp, r7
  8003632:	bd80      	pop	{r7, pc}
- 8003634:	20002064 	.word	0x20002064
+ 8003634:	20002054 	.word	0x20002054
 
 08003638 <MCP2515_SPI1_Reset>:
 
@@ -9761,7 +9761,7 @@ __weak void HAL_IncTick(void)
  8003c08:	4770      	bx	lr
  8003c0a:	bf00      	nop
  8003c0c:	2000001c 	.word	0x2000001c
- 8003c10:	20002150 	.word	0x20002150
+ 8003c10:	20002140 	.word	0x20002140
 
 08003c14 <HAL_GetTick>:
   * @note This function is declared as __weak to be overwritten in case of other
@@ -9781,7 +9781,7 @@ __weak uint32_t HAL_GetTick(void)
  8003c20:	f85d 7b04 	ldr.w	r7, [sp], #4
  8003c24:	4770      	bx	lr
  8003c26:	bf00      	nop
- 8003c28:	20002150 	.word	0x20002150
+ 8003c28:	20002140 	.word	0x20002140
 
 08003c2c <HAL_GetTickPrio>:
 /**
@@ -31751,7 +31751,7 @@ SVCCTL_UserEvtFlowStatus_t SVCCTL_App_Notification(void *p_Pckt)
                       ((aci_gap_numeric_comparison_value_event_rp0 *)(p_blecore_evt->data))->Numeric_Value);
  800bed8:	69fb      	ldr	r3, [r7, #28]
  800beda:	3302      	adds	r3, #2
-          APP_DBG_MSG("     - numeric_value = %ld\n",
+          APP_DBG_MSG("     - numeric_value = %d\n",
  800bedc:	f8d3 3002 	ldr.w	r3, [r3, #2]
  800bee0:	4619      	mov	r1, r3
  800bee2:	482f      	ldr	r0, [pc, #188]	; (800bfa0 <SVCCTL_App_Notification+0x354>)
@@ -31822,7 +31822,7 @@ SVCCTL_UserEvtFlowStatus_t SVCCTL_App_Notification(void *p_Pckt)
  800bf60:	20001ae4 	.word	0x20001ae4
  800bf64:	0800e7a0 	.word	0x0800e7a0
  800bf68:	0800e7cc 	.word	0x0800e7cc
- 800bf6c:	20002154 	.word	0x20002154
+ 800bf6c:	20002144 	.word	0x20002144
  800bf70:	0800e808 	.word	0x0800e808
  800bf74:	3ff40000 	.word	0x3ff40000
  800bf78:	0800e83c 	.word	0x0800e83c
@@ -32906,7 +32906,7 @@ void myTask(void)
  800c574:	bf00      	nop
  800c576:	bd80      	pop	{r7, pc}
  800c578:	48000800 	.word	0x48000800
- 800c57c:	20002250 	.word	0x20002250
+ 800c57c:	20002240 	.word	0x20002240
 
 0800c580 <Custom_STM_App_Notification>:
 /* USER CODE END PFP */
@@ -33054,7 +33054,7 @@ void Custom_Vgsizeitread_Update_Char(void) /* Property Read */
  800c60e:	46bd      	mov	sp, r7
  800c610:	bd80      	pop	{r7, pc}
  800c612:	bf00      	nop
- 800c614:	20002250 	.word	0x20002250
+ 800c614:	20002240 	.word	0x20002240
 
 0800c618 <Custom_STM_Event_Handler>:
  * @brief  Event handler
@@ -33194,7 +33194,7 @@ static SVCCTL_EvtAckStatus_t Custom_STM_Event_Handler(void *Event)
  800c6ee:	2100      	movs	r1, #0
  800c6f0:	2032      	movs	r0, #50	; 0x32
  800c6f2:	f7f6 ffe0 	bl	80036b6 <MCP2515_SPI1_WriteReg>
-           MCP2515_SPI1_WriteReg(MCP_TXB0DLC, 0x04, 1); // change to corespoind byte length
+           MCP2515_SPI1_WriteReg(MCP_TXB0DLC, 0x04, 1); // change to correspond byte length
  800c6f6:	2201      	movs	r2, #1
  800c6f8:	2104      	movs	r1, #4
  800c6fa:	2035      	movs	r0, #53	; 0x35
