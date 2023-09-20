@@ -95,7 +95,7 @@ void Read_RXdata(uint16* rx_id, uint8* base_adr) {
               Master.ID_400_buffer[i] = 0x00;
               MCP2515_SPI1_ReadReg(*base_adr+i, &Master.ID_400_buffer[i], 1);
             }
-			if(Master.ID_400_buffer[0] == 0x40) {
+			if((Master.ID_400_buffer[0] == 0x40)|| (Master.ID_400_buffer[0] == 0x7F)){
 				Master_EMS.curren_floor = Master.ID_400_buffer[1];
             }
         break;
@@ -131,6 +131,9 @@ void Read_RXdata(uint16* rx_id, uint8* base_adr) {
                 case 0x05:
                     Master_EMS.chosen_floor = Master.ID_490_buffer[1];
                     break;
+                case 0x07:
+					Master_EMS.chosen_floor = Master.ID_490_buffer[1];
+					break;
                 case 0x0E:
                     if(Master.ID_490_buffer[1] == 0x09) {
                         if(Master.ID_490_buffer[5] == 0x00) {
@@ -185,7 +188,7 @@ void Read_Slave1_RXdata(uint16* rx_id, uint8* base_adr) {
             for(int j = rxLength2; j < 8; j++) {
                 Slave_1.ID_400_buffer[j] = 0x00;
             }
-            if(Slave_1.ID_400_buffer[0] == 0x40) {
+            if((Slave_1.ID_400_buffer[0] == 0x40)|| (Slave_1.ID_400_buffer[0] == 0x7F)) {
                     Slave_EMS_1.curren_floor = Slave_1.ID_400_buffer[1];
             }
         break;
@@ -231,6 +234,9 @@ void Read_Slave1_RXdata(uint16* rx_id, uint8* base_adr) {
                 case 0x05:
                     Slave_EMS_1.chosen_floor = Slave_1.ID_490_buffer[1];
                     break;
+                case 0x07:
+                     Slave_EMS_1.chosen_floor = Slave_1.ID_490_buffer[1];
+                     break;
                 case 0x0E:
                     if(Slave_1.ID_490_buffer[1] == 0x09) {
                         if(Slave_1.ID_490_buffer[5] == 0x00) {
