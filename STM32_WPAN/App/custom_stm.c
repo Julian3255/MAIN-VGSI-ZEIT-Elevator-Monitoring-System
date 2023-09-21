@@ -206,17 +206,29 @@ static SVCCTL_EvtAckStatus_t Custom_STM_Event_Handler(void *Event)
            		//MCP2515_ReadReg(MCP_TXB0CTRL, 0, 1);
            MCP2515_SPI1_RegModify(MCP_TXB0CTRL, 0x03, 0xFF);
 
-           		/* Load the High and Low address and DLC byte length */
-           MCP2515_SPI1_WriteReg(MCP_TXB0SIDH, 0x40, 1);  // 0x200 = 0010 0000 0000 -> 0100 0000    = 0x40
-           MCP2515_SPI1_WriteReg(MCP_TXB0SIDL, 0x00, 1);   // 000 = 0x00
-           MCP2515_SPI1_WriteReg(MCP_TXB0DLC, 0x04, 1); // change to correspond byte length
+          //  		/* Load the High and Low address and DLC byte length */
+          //  MCP2515_SPI1_WriteReg(MCP_TXB0SIDH, 0x40, 1);  // 0x200 = 0010 0000 0000 -> 0100 0000    = 0x40
+          //  MCP2515_SPI1_WriteReg(MCP_TXB0SIDL, 0x00, 1);   // 000 = 0x00
+          //  MCP2515_SPI1_WriteReg(MCP_TXB0DLC, 0x04, 1); // change to correspond byte length
 
-           MCP2515_SPI1_WriteReg(MCP_TXB0_DATA0, 0x00, 1);
-           MCP2515_SPI1_WriteReg(MCP_TXB0_DATA1, 0x30, 1);
-           MCP2515_SPI1_WriteReg(MCP_TXB0_DATA2, 0x00, 1);
-           MCP2515_SPI1_WriteReg(MCP_TXB0_DATA3, 0xF0, 1);
+          //  MCP2515_SPI1_WriteReg(MCP_TXB0_DATA0, 0x00, 1);
+          //  MCP2515_SPI1_WriteReg(MCP_TXB0_DATA1, 0x30, 1);
+          //  MCP2515_SPI1_WriteReg(MCP_TXB0_DATA2, 0x00, 1);
+          //  MCP2515_SPI1_WriteReg(MCP_TXB0_DATA3, 0xF0, 1);
 
+           		/* Load the High and Low address  - 0x490 and DLC byte length */
 
+           MCP2515_SPI1_WriteReg(MCP_TXB0SIDH, 0x92, 1);  
+           MCP2515_SPI1_WriteReg(MCP_TXB0SIDL, 0x00, 1);   
+           MCP2515_SPI1_WriteReg(MCP_TXB0DLC, 0x07, 1); // change to correspond byte length
+
+           MCP2515_SPI1_WriteReg(MCP_TXB0_DATA0, 0x05, 1);
+           MCP2515_SPI1_WriteReg(MCP_TXB0_DATA1, 0x01, 1);
+           MCP2515_SPI1_WriteReg(MCP_TXB0_DATA2, 0x01, 1);
+           MCP2515_SPI1_WriteReg(MCP_TXB0_DATA3, 0x00, 1);
+           MCP2515_SPI1_WriteReg(MCP_TXB0_DATA4, 0x01, 1);
+           MCP2515_SPI1_WriteReg(MCP_TXB0_DATA5, 0x01, 1);
+           MCP2515_SPI1_WriteReg(MCP_TXB0_DATA6, 0x01, 1);
    	    /* If the TXREQ bit in TX0CTRL is set -> Transmission requested
    	      Increment the tx_done counter to evaluate number of transmission
    	    */
