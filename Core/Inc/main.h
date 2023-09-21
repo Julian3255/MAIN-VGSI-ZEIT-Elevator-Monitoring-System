@@ -106,6 +106,8 @@ typedef struct
     int door_status;
     int open_door_button_stat;
     int close_door_button_stat;
+    int up_button_status;
+    int down_button_status;
 } EMS_data; 
 
 /* USER CODE END EFP */

@@ -98,6 +98,16 @@ void Read_RXdata(uint16* rx_id, uint8* base_adr) {
 			if((Master.ID_400_buffer[0] == 0x40)|| (Master.ID_400_buffer[0] == 0x7F)){
 				Master_EMS.curren_floor = Master.ID_400_buffer[1];
             }
+			if (Master.ID_400_buffer[0] == 0x02) {
+                switch (Master.ID_400_buffer[1]) {
+                    case 0x01:
+                        Master_EMS.up_button_status = Master.ID_400_buffer[5];
+                        break;
+                    case 0x02:
+                        Master_EMS.down_button_status = Master.ID_400_buffer[5];
+                        break;
+                }
+			}
         break;
 
         /* 0x481 - Indicate door status (opened/closed) of the elevator */
@@ -190,6 +200,17 @@ void Read_Slave1_RXdata(uint16* rx_id, uint8* base_adr) {
             }
             if((Slave_1.ID_400_buffer[0] == 0x40)|| (Slave_1.ID_400_buffer[0] == 0x7F)) {
                     Slave_EMS_1.curren_floor = Slave_1.ID_400_buffer[1];
+            }
+
+            if(Slave_1.ID_400_buffer[0] == 0x02) {
+                switch (Slave_1.ID_400_buffer[1]) {
+                    case 0x01:
+                        Slave_EMS_1.up_button_status = Slave_1.ID_400_buffer[5];
+                        break;
+                    case 0x02:
+                        Slave_EMS_1.down_button_status = Slave_1.ID_400_buffer[5];
+                        break;
+                }
             }
         break;
 
